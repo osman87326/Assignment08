@@ -3,7 +3,7 @@ import SearchBook from "@/components/SearchBook";
 import React from "react";
 
 const allBookPage = async () => {
-  const res = await fetch("https://book-nest-tau-sable.vercel.app/data.json");
+  const res = await fetch("https://assignment08-psi.vercel.app/data.json");
   const books = await res.json();
 
   //const filterBooks = books.filter (book => book.title.toLowerCase());
