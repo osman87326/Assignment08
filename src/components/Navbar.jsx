@@ -54,8 +54,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">
           <li><Link href="/">Home</Link></li>
           <li><Link href="/all-books">All Books</Link></li>
-          <li><Link href="/pricing">Pricing</Link></li>
-          <li><Link href="/profile">Profile</Link></li>
+         { user && 
+            <li><Link href="/profile">Profile</Link></li>
+          }
         </ul>
       </div>
 
@@ -70,9 +71,12 @@ const Navbar = () => {
           <>
             {/* Logout button */}
             <button
-              className="btn"
-              onClick={() => authClient.signOut()}
-            >
+  className="btn"
+  onClick={async () => {
+    await authClient.signOut();
+    window.location.href = "/";
+  }}
+>
               Log Out
             </button>
 
