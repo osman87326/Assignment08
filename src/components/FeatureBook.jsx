@@ -2,7 +2,7 @@ import React from 'react';
 import BookCard from './BookCard';
 
 const FeaturedBook = async() => {
-    const res = await fetch("https://book-nest-tau-sable.vercel.app/data.json");
+    const res = await fetch("https://assignment08-psi.vercel.app/data.json");
     const books = await res.json();
    
 
