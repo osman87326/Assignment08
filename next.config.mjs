@@ -1,7 +1,10 @@
-/** @type {import('next').NextConfig} */
+/** /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
   reactCompiler: true,
+
+  images: {
+    domains: ["assignment08-psi.vercel.app"], 
+  },
 };
 
 export default nextConfig;

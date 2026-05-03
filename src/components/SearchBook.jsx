@@ -1,28 +1,28 @@
-'use client'
+'use client';
 
 import React from "react";
 import BookCard from "./BookCard";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
-const SearchBook = ({books}) => {
-  function searchBooks() {
-    const searchParams = useSearchParams();
-    const search = searchParams.get("Search");
+const SearchBook = ({ books }) => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-    const handleSearch = (e) => {
-      const params = new URLSearchParams(searchParams);
-      params.set("Search", e.target.value);
-    };
-    const filterBooks = search ? (
-      books.filter((book) =>
-        book.title.toLowerCase().includes(search.toLowerCase()),
-      )
-    ) : (
-      <p>Books not found</p>
-    );
-  }
+  const search = searchParams.get("search") || "";
+
+  const handleSearch = (e) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("search", e.target.value);
+    router.push(`?${params.toString()}`);
+  };
+
+  const filteredBooks = books.filter((book) =>
+    book.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div>
+      {/* Search Input */}
       <label className="input">
         <svg
           className="h-[1em] opacity-50"
@@ -40,17 +40,25 @@ const SearchBook = ({books}) => {
             <path d="m21 21-4.3-4.3"></path>
           </g>
         </svg>
+
         <input
           type="search"
-          required
-          placeholder="Search"
-          defaultValue={Search}
+          placeholder="Search books..."
+          value={search}
           onChange={handleSearch}
         />
       </label>
-      {filterBooks.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
+
+      {/* Results */}
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
+        {filteredBooks.length > 0 ? (
+          filteredBooks.map((book) => (
+            <BookCard key={book.id} book={book} />
+          ))
+        ) : (
+          <p>No books found</p>
+        )}
+      </div>
     </div>
   );
 };
