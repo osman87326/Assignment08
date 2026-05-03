@@ -15,7 +15,7 @@ const Banner = () => {
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold">Stories Worth Reading</h1>
           <p className="mb-5">
-            Discover, explore, and collect books you ll love. Thousands of
+            Discover, explore, and collect books youll love. Thousands of
             titles — all in one place.
           </p>
           <button className="btn btn-primary">Browse Now</button>

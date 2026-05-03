@@ -24,7 +24,7 @@ const BookCard = ({book}) => {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt={book.title}
-            className="object-cover rounded-xl  inset-2!"
+            className="object-cover rounded-xl inset-2!"
           />
 
           <Chip size="sm" className="absolute right-2 top-2">

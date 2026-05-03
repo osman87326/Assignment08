@@ -1,28 +1,25 @@
-'use client';
-
+'use client'
+import { useSearchParams } from "next/navigation";
 import React from "react";
 import BookCard from "./BookCard";
-import { useSearchParams, useRouter } from "next/navigation";
 
 const SearchBook = ({ books }) => {
   const searchParams = useSearchParams();
-  const router = useRouter();
-
-  const search = searchParams.get("search") || "";
+  const search = searchParams.get("Search") || "";
 
   const handleSearch = (e) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("search", e.target.value);
-    router.push(`?${params.toString()}`);
+    const params = new URLSearchParams(searchParams);
+    params.set("Search", e.target.value);
+    // optionally navigate or update query params here if needed
   };
 
-  const filteredBooks = books.filter((book) =>
-    book.title.toLowerCase().includes(search.toLowerCase())
-  );
-
+  const filteredBooks = search
+    ? books.filter((book) =>
+        book.title.toLowerCase().includes(search.toLowerCase()),
+      )
+    : books;
   return (
     <div>
-      {/* Search Input */}
       <label className="input">
         <svg
           className="h-[1em] opacity-50"
@@ -40,25 +37,17 @@ const SearchBook = ({ books }) => {
             <path d="m21 21-4.3-4.3"></path>
           </g>
         </svg>
-
         <input
           type="search"
-          placeholder="Search books..."
-          value={search}
+          required
+          placeholder="Search"
+          defaultValue={Search}
           onChange={handleSearch}
         />
       </label>
-
-      {/* Results */}
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
-        {filteredBooks.length > 0 ? (
-          filteredBooks.map((book) => (
-            <BookCard key={book.id} book={book} />
-          ))
-        ) : (
-          <p>No books found</p>
-        )}
-      </div>
+      {filterBooks.map((book) => (
+          <BookCard key={book.id} book={book} />
+        ))}
     </div>
   );
 };
