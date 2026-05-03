@@ -1,8 +1,14 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+'use client'
+
+import { authClient } from "@/lib/auth-client";
+import { Avatar } from "@heroui/react";
+import Image from "next/image";
+import Link from "next/link";
+
 
 const Navbar = () => {
+  const userData = authClient.useSession();
+  const user = userData.data?.user;
   return (
     <div>
       <div className="navbar bg-base-100 shadow-sm">
@@ -43,13 +49,13 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <Image
+          {/* <Image
             src={"/images/logo.png"}
             alt="book next logo"
             width={100}
             height={100}
             className="dark:brightness-200"
-          />
+          /> */}
           <a href={"/"} className="btn btn-ghost text-xl">
             Book Nest
           </a>
@@ -60,7 +66,7 @@ const Navbar = () => {
               <Link href={"/"}>Home</Link>
             </li>
             <li>
-              <Link href={"/all-photos"}>All Photos</Link>
+              <Link href={"/all-books"}>All Books</Link>
             </li>
             <li>
               <Link href={"/pricing"}>Pricing</Link>
@@ -70,12 +76,28 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end gap-3">
+          {!user && (
+            <ul>
+              <a href="/signin" className="btn">
+                Log In
+              </a>
+              <a href="/signout" className="btn">
+                log Out
+              </a>
+            </ul>
+          )}
+
+          {
+            user && <Avatar>
+        <Avatar.Image alt={user?.name} src={user?.Image} />
+        <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
+      </Avatar>
+          }
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
