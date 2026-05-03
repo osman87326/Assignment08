@@ -2,7 +2,7 @@ import BookCard from "@/components/BookCard";
 import SearchBook from "@/components/SearchBook";
 import React from "react";
 
-const AllBookPage = async () => {
+const allBookPage = async () => {
   const res = await fetch(
     "https://assignment08-psi.vercel.app/data.json",
     {
@@ -28,7 +28,7 @@ const AllBookPage = async () => {
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
         {books.map((book) => (
-          <BookCard key={book.id} book={book} />
+          <BookCard key={book.id} book={book}> </BookCard>
         ))}
       </div>
 
@@ -36,4 +36,4 @@ const AllBookPage = async () => {
   );
 };
 
-export default AllBookPage;
+export default allBookPage;
