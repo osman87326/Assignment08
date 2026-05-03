@@ -1,36 +1,88 @@
-# This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
+# 📚 Online Book Borrowing Platform
 
-## Getting Started
+## 🧾 Project Name
 
-First, run the development server:
+Online Book Borrowing Platform
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Purpose
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The purpose of this project is to digitize the traditional library system by creating a seamless and modern web application where users can explore, search, and borrow books online. It focuses on providing a smooth user experience with secure authentication, responsive design, and efficient book management.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔗 Live URL
 
-To learn more about Next.js, take a look at the following resources:
+👉 [https://assignment08-psi.vercel.app/](https://assignment08-psi.vercel.app/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✨ Key Features
 
-## Deploy on Vercel
+### 🏠 Home Page
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Hero section: "Find Your Next Read"
+* Marquee showing latest updates and announcements
+* Featured books section (Top 4 books from database)
+* Additional custom UI sections for improved user experience
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 📚 All Books Page
+
+* Search books by title
+* Category filter (Story, Tech, Science)
+* Responsive book cards
+* Navigation to individual book details page
+
+### 📖 Book Details Page (Protected)
+
+* Full book information (title, author, description, availability)
+* Large cover image layout
+* "Borrow This Book" functionality with authentication check
+
+### 👤 Authentication System
+
+* User registration (Name, Email, Photo URL, Password)
+* Secure login system
+* Google OAuth login integration
+* Conditional navbar rendering based on login state
+
+### 👤 My Profile (Protected)
+
+* Display logged-in user information
+* Update profile (Name & Image)
+* BetterAuth integration for user updates
+
+### 🎨 UI / UX Features
+
+* Fully responsive design (mobile, tablet, desktop)
+* Modern and clean UI layout
+* Smooth navigation experience
+* Animation support using external library (Animate.css / Framer Motion / SwiperJS)
+
+---
+
+## 📦 NPM Packages Used
+
+* next
+* react
+* react-dom
+* tailwindcss
+* better-auth
+* mongodb
+* react-icons
+* axios
+* (animation library: animate.css / framer-motion / swiper)
+
+---
+
+## 🚀 Deployment
+
+* Hosted on: Vercel
+* Fully SPA-compatible routing (no refresh errors on navigation)
+
+---
+
+## 👨‍💻 Summary
+
+This project demonstrates a full-stack online library system built with modern web technologies, focusing on authentication, protected routes, responsive UI design, and real-world user interaction features.
