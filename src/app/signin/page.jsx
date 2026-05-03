@@ -22,7 +22,7 @@ export default function SignInPage() {
     const password = e.target.password.value;
 
     //console.log({name, email, password, image})
-    //RKeQVZ2YIUvctshG
+   //5WCqEQUChKFJ1JPA
 
     const { data, error } = await authClient.signIn.email({
       password,
