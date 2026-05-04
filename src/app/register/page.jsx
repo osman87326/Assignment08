@@ -21,7 +21,7 @@ export default function SignUpPage() {
     e.preventDefault();
 
     const name = e.target.name.value;
-    const image = e.target.image.value;
+    
     const email = e.target.email.value;
     const password = e.target.password.value;
 
@@ -29,7 +29,7 @@ export default function SignUpPage() {
       name,
       email,
       password,
-      image,
+      
     });
 
     if (!error) {
@@ -58,12 +58,7 @@ export default function SignUpPage() {
           <FieldError />
         </TextField>
 
-        <TextField isRequired name="image">
-          <Label>Image URL</Label>
-          <Input placeholder="Image URL" />
-          <FieldError />
-        </TextField>
-
+        
         <TextField isRequired name="email" type="email">
           <Label>Email</Label>
           <Input placeholder="john@example.com" />
