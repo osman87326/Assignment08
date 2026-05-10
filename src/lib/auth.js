@@ -4,26 +4,32 @@ import { betterAuth } from "better-auth";
 
 import { MongoClient } from "mongodb";
 
-
 const client = new MongoClient(process.env.MONGODB_URI);
-//await client.connect();
 const db = client.db("booknest");
 
 export const auth = betterAuth({
-
-    emailAndPassword: { 
+  emailAndPassword: { 
     enabled: true, 
-    },
+  },
   database: mongodbAdapter(db, {
-    // Optional: if you don't provide a client, database transactions won't be enabled.
     client,
   }),
   
-    socialProviders: {
-        google: { 
-            clientId: process.env.GOOGLE_CLIENT_ID , 
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET , 
-        }, 
-    },
+  socialProviders: {
+    google: { 
+      clientId: process.env.GOOGLE_CLIENT_ID , 
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET , 
+    }, 
+  },
 });
+
+// Ensure connection is established
+if (!globalThis.__mongoConnected) {
+  globalThis.__mongoConnected = client.connect().then(() => {
+    console.log("MongoDB connected via auth.js");
+  }).catch((err) => {
+    console.error("Failed to connect MongoDB:", err);
+  });
+}
+
 
